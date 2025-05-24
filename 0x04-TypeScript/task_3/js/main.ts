@@ -1,90 +1,58 @@
-//Creating an interface called DirectorInterface
-interface DirectorInterface  {
-   workFromHome():string;
-   getCoffeeBreak():string;
-   workDirectorTasks():string;
+// // /// <reference path="./crud.d.ts"/>
+
+// // import { RowID, RowElement } from './interface';
+// // import * as CRUD from './crud';
+
+
+// // // Create the row object of type RowElement
+// // const row:RowElement =  {
+// // firstName: "Guillaume",
+// // lastName: "Salva"
+// // }
+
+// // // Insert row and save the returned RowID
+// // const newRowID:RowID = CRUD.insertRow(row);
+
+// // // Create updatedRow with age field set to 23
+// // const updateRow:RowElement = {...row, age:23}
+
+// // CRUD.updateRow(newRowID, updateRow);
+// // CRUD.deleteRow(newRowID)
+
+
+// /// <reference path="./crud.d.ts" />
+
+// import { RowID, RowElement } from './interface';
+// import * as CRUD from './crud';
+
+// // Step 1: Create the row object
+// const obj: RowElement = { firstName: "Guillaume", lastName: "Salva" };
+
+// // Step 2: Insert the row and save the returned ID
+// const newRowID: RowID = CRUD.insertRow(obj);
+// // Console output: Insert row {firstName: "Guillaume", lastName: "Salva"}
+
+// // Step 3: Create updated row with age
+// const updatedRow: RowElement = { firstName: "Guillaume", lastName: "Salva", age: 23 };
+
+// // Step 4: Update the row using the newRowID
+// CRUD.updateRow(newRowID, updatedRow);
+// // Console output: Update row 125 {firstName: "Guillaume", lastName: "Salva", age: 23}
+
+// // Step 5: Delete the row
+// CRUD.deleteRow(newRowID);
+// // Console output: Delete row id 125
+
+
+import { RowID, RowElement } from './interface.ts';
+import * as CRUD from './crud.js';
+
+const row: RowElement = {
+  firstName: "Guillaume",
+  lastName: "Salva"
 };
 
-//Creating an interface called TeacherInterface
-interface TeacherInterface {
-  workFromHome():string
-  getCoffeeBreak():string
-  workTeacherTasks():string
-}
-
-
-//creating a class Director which implements DirectorInterface interface
-class Director implements DirectorInterface{
-  workFromHome(): string {
-    return "Working from home";
-  }
-
-  getCoffeeBreak():string {
-    return "Getting a coffee break";
-  }
-
-  workDirectorTasks(): string {
-    return "Getting to director tasks";
-  }
-
-}
-
-class Teacher implements TeacherInterface{
-  workFromHome(): string {
-    return "Cannot work from home"
-  }
-
-  getCoffeeBreak(): string {
-    return "Cannot have a break"
-  }
-
-  workTeacherTasks(): string {
-    return "Getting to work"
-  }
-}
-
-// a function which returns teacher or director  when  you put in number or number in string form
-function createEmployee(salary: number | string): Teacher | Director{
- if(typeof salary === "number" && salary < 500){
-  return new Teacher()
- }
- else{
-  return  new Director()
- }
-}
-
-function isDirector(employee:Teacher | Director) : employee is Director{
-return (employee as Director).workDirectorTasks !== undefined;
-
-}
-
-//a function it accepts employee as an argument
-// if the employee is a Director, it will call workDirectorTasks
-// if the employee is a Teacher, it will call workTeacherTasks
-function executeWork(employee: Director | Teacher): string {
-  if (isDirector(employee)){
-    console.log(employee.workDirectorTasks()) ;
-  }
-  else{
-    console.log(employee.workTeacherTasks()) ;
-  }
-
-  return "Unknown employee role";
-}
-
-
-type Subjects = "Math" |"History" ;
-function teachClass(todayClass:Subjects){
-  if(todayClass === "Math"){
-    console.log("Teaching Math");
-  }
-  else if(todayClass === "History"){
-    console.log("Teaching History");
-  }
-  }
-
- 
-
-  teachClass("Math")
-  teachClass("History")
- 
+const newRowID: RowID = CRUD.insertRow(row);
+const updatedRow: RowElement = { ...row, age: 23 };
+CRUD.updateRow(newRowID, updatedRow);
+CRUD.deleteRow(newRowID);
