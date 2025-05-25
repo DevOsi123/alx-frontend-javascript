@@ -2,20 +2,16 @@
 /// <reference path="./Subject.ts" />
 
 namespace Subjects {
-    export class Cpp extends Subject {
-        getRequirements(): string {
-            return "Here is the list of requirements for Cpp"
-        }
-
-        getAvailableTeacher(): string{
-        if(!this.teacher || this.teacher.experienceTeachingC === undefined || this.teacher.experienceTeachingC <= 0){
-            return "No teacher available";
-        }
-        else{
-            return `Available Teacher: ${this.teacher.firstName}`;
-        }
-    }
+  export class Cpp extends Subject {
+    getRequirements(): string {
+      return "Here is the list of requirements for Cpp";
     }
 
-    
+    getAvailableTeacher(): string {
+      if (!this.teacher || this.teacher.experienceTeachingC === undefined || this.teacher.experienceTeachingC <= 0) {
+        return "No teacher available";
+      }
+      return `Available Teacher: ${this.teacher.firstName}`;
+    }
+  }
 }
