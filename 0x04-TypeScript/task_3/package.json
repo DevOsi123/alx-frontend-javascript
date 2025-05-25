@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Frontend project",
   "main": "index.js",
+  "type": "module",               
   "scripts": {
     "start": "webpack",
     "build": "webpack --mode production"
